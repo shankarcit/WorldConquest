@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using WorldConquest.Game;
 
 namespace WorldConquest.Map
 {
@@ -18,6 +19,7 @@ namespace WorldConquest.Map
         {
             LoadCountries();
             GetComponent<MilitaryDataLoader>()?.Apply(countries);
+            GameManager.Instance?.OnCountriesLoaded(countries);
         }
 
         public List<CountryData> GetCountries() => countries;
