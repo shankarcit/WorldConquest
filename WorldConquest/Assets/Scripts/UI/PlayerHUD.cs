@@ -25,6 +25,10 @@ namespace WorldConquest.UI
         [SerializeField] private TextMeshProUGUI airForceText;
         [SerializeField] private TextMeshProUGUI navyText;
 
+        [Header("Economy (GDD §12)")]
+        [SerializeField] private TextMeshProUGUI gdpText;
+        [SerializeField] private TextMeshProUGUI resourcesText;
+
         [Header("Notification (top-right)")]
         [SerializeField] private GameObject notificationPanel;
         [SerializeField] private TextMeshProUGUI notificationText;
@@ -66,12 +70,14 @@ namespace WorldConquest.UI
 
             var p = GameManager.Instance.PlayerCountry;
 
-            if (countryNameText  != null) countryNameText.text    = p.Name;
-            if (territoryCountText != null) territoryCountText.text = $"Territories: 1";
+            if (countryNameText    != null) countryNameText.text    = p.Name;
+            if (territoryCountText != null) territoryCountText.text = $"Territory: {p.TerritoryPercent * 100f:F0}%";
             if (troopsText    != null) troopsText.text    = $"Troops: {p.Troops:N0}";
             if (missilesText  != null) missilesText.text  = $"Missiles: {p.Missiles:N0}";
             if (airForceText  != null) airForceText.text  = $"Air Force: {p.AirForce:N0}";
             if (navyText      != null) navyText.text      = $"Navy: {p.Navy:N0}";
+            if (gdpText       != null) gdpText.text       = $"GDP: {p.GDP:N0}";
+            if (resourcesText != null) resourcesText.text = $"Treasury: {p.Resources:N0}  (+{Game.EconomySystem.ProjectedIncome(p):N0}/turn)";
         }
 
         private void ShowNotification(string message)

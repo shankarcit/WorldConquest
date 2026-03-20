@@ -32,6 +32,8 @@ namespace WorldConquest.Game
         public bool            hasCoastline;
         public DiplomaticStatus status;
         public TerrainType     terrain;
+        public int             gdp;
+        public int             resources;
 
         public static CountrySaveData From(CountryData c) => new CountrySaveData
         {
@@ -46,6 +48,8 @@ namespace WorldConquest.Game
             hasCoastline     = c.HasCoastline,
             status           = c.Status,
             terrain          = c.Terrain,
+            gdp              = c.GDP,
+            resources        = c.Resources,
         };
 
         public void ApplyTo(CountryData c)
@@ -59,6 +63,8 @@ namespace WorldConquest.Game
             c.HasCoastline     = hasCoastline;
             c.Status           = status;
             c.Terrain          = terrain;
+            c.GDP              = gdp;
+            c.Resources        = resources;
         }
     }
 }

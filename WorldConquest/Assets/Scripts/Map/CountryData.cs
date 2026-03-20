@@ -32,6 +32,10 @@ namespace WorldConquest.Map
         // Coastline flag (affects navy regeneration per GDD §8.4)
         public bool HasCoastline = true;
 
+        // Economy (GDD §12)
+        public int GDP       = 0;   // base income capacity, derived from military rank at start
+        public int Resources = 0;   // accumulated treasury; auto-converts to military each turn
+
         // Map
         public List<Vector2[]> Polygons = new List<Vector2[]>(); // lon/lat pairs
     }

@@ -40,7 +40,10 @@ namespace WorldConquest.Game
             foreach (CountryData country in gm.AllCountries)
             {
                 if (country.TerritoryPercent > 0f)
+                {
                     CombatSystem.RegenerateTick(country);
+                    EconomySystem.EconomyTick(country); // GDP income → military (GDD §12)
+                }
             }
 
             UpdateTurnLabel();

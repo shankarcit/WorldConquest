@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using WorldConquest.Game;
 
 namespace WorldConquest.Map
 {
@@ -57,6 +58,10 @@ namespace WorldConquest.Map
                     country.Navy         = 0;
                 }
             }
+            // Initialise GDP for all countries after military stats are set (GDD §12)
+            foreach (CountryData country in countries)
+                EconomySystem.InitializeGDP(country, totalRanked: 50);
+
             Debug.Log($"MilitaryDataLoader: Applied stats to {matched}/{countries.Count} countries.");
         }
     }
