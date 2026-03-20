@@ -148,7 +148,7 @@ namespace WorldConquest.UI
             Debug.Log(msg);
             MapEventBus.OnNotification?.Invoke(msg);
             MapEventBus.OnWarDeclared?.Invoke(selectedCountry);
-            Populate(selectedCountry);
+            Close(); // close menu so deployment screen can open cleanly
         }
 
         private void Close()

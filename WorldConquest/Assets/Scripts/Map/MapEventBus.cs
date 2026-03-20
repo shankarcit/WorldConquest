@@ -8,8 +8,9 @@ namespace WorldConquest.Map
     /// </summary>
     public static class MapEventBus
     {
-        public static Action<CountryData> OnCountryClicked;
-        public static Action<CountryData> OnWarDeclared;
-        public static Action<string>      OnNotification;
+        public static Action<CountryData>              OnCountryClicked;
+        public static Action<CountryData>              OnWarDeclared;
+        public static Action<string>                   OnNotification;
+        public static Action<CountryData, CountryData> OnCountryConquered; // (loser, winner)
     }
 }
