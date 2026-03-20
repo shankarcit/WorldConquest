@@ -22,12 +22,15 @@
 - [x] DeploymentScreen — slider-based force selection, battle result panel
 - [x] PlayerHUD — top/bottom bar, notification popup
 - [x] MapEventBus — OnCountryClicked, OnWarDeclared, OnNotification, OnCountryConquered, OnTurnEnded
+- [x] MinimapController — secondary orthographic camera → RenderTexture → RawImage (bottom-right); viewport indicator overlay; cyan player-country marker quad; auto-updates on conquest (GDD §5.2)
 
 ### Visuals
 - [x] CountryMesh conquest visual — conquered countries turn dark grey, collider disabled (GDD §8.5)
 
+### Assets
+- [x] MinimapRT.renderTexture — 512×256 RenderTexture in Assets/RenderTextures/
+
 ## Next up (from GDD)
-- [ ] Minimap — bottom-right territory overview (GDD §5.2)
-- [ ] Economy system — GDP / resource income per turn (GDD §12 future)
 - [ ] Save/load system — JSON game state serialization (GDD §13)
-- [ ] Scene wiring — add AITurnManager component to GameManager GameObject in SampleScene.unity
+- [ ] Economy system — GDP / resource income per turn (GDD §12 future)
+- [ ] Scene wiring note: MinimapController needs wiring in Inspector (see setup guide)
