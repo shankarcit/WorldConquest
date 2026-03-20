@@ -12,9 +12,32 @@ namespace WorldConquest.Map
         private MeshRenderer meshRenderer;
 
         private Color baseColor;
-        private static readonly Color HoverColor = new Color(1f, 1f, 0.4f, 1f); // yellow highlight
+        private static readonly Color HoverColor    = new Color(1f, 1f, 0.4f, 1f);   // yellow
+        private static readonly Color ConqueredColor = new Color(0.25f, 0.25f, 0.25f); // dark grey
 
         public CountryData Data => data;
+
+        void Awake()
+        {
+            MapEventBus.OnCountryConquered += OnCountryConquered;
+        }
+
+        void OnDestroy()
+        {
+            MapEventBus.OnCountryConquered -= OnCountryConquered;
+        }
+
+        private void OnCountryConquered(CountryData loser, CountryData winner)
+        {
+            if (loser != data) return;
+
+            // Conquered country turns dark grey (GDD §8.5)
+            baseColor = ConqueredColor;
+            meshRenderer.material.color = baseColor;
+
+            // Disable collider so it can no longer be clicked
+            GetComponent<MeshCollider>().enabled = false;
+        }
 
         public void Initialize(CountryData countryData, Material mat, float scale)
         {
