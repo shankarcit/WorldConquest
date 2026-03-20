@@ -51,6 +51,10 @@ namespace WorldConquest.Game
             // Check win conditions at end of each turn
             GetComponent<WinConditionChecker>()?.Check();
 
+            // Let AI countries act this turn (GDD §2)
+            GetComponent<AITurnManager>()?.ProcessAITurn();
+
+            MapEventBus.OnTurnEnded?.Invoke(CurrentTurn);
             MapEventBus.OnNotification?.Invoke($"Turn {CurrentTurn} — forces regenerated.");
             Debug.Log($"TurnManager: Advanced to turn {CurrentTurn}");
         }

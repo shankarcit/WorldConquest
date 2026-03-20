@@ -12,5 +12,6 @@ namespace WorldConquest.Map
         public static Action<CountryData>              OnWarDeclared;
         public static Action<string>                   OnNotification;
         public static Action<CountryData, CountryData> OnCountryConquered; // (loser, winner)
+        public static Action<int>                      OnTurnEnded;         // (turnNumber)
     }
 }
