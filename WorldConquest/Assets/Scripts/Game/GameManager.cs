@@ -71,5 +71,13 @@ namespace WorldConquest.Game
         }
 
         public bool IsGameStarted => gameStarted;
+
+        /// <summary>Called by SaveSystem.Load() to restore the player's country.</summary>
+        public void SetPlayerCountry(CountryData country)
+        {
+            PlayerCountry = country;
+            gameStarted   = true; // treat a loaded game as already started
+            Debug.Log($"GameManager: Player country restored to {country.Name}");
+        }
     }
 }

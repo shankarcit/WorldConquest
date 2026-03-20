@@ -59,6 +59,13 @@ namespace WorldConquest.Game
             Debug.Log($"TurnManager: Advanced to turn {CurrentTurn}");
         }
 
+        /// <summary>Called by SaveSystem.Load() to restore the saved turn number.</summary>
+        public void SetTurn(int turn)
+        {
+            CurrentTurn = turn;
+            UpdateTurnLabel();
+        }
+
         private void UpdateTurnLabel()
         {
             if (turnCounterText != null)
